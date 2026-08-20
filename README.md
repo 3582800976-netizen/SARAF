@@ -1,6 +1,6 @@
 # SARAF：平稳性感知的检索增强时间序列预测（论文复现）
 
-[![arXiv](https://img.shields.io/badge/arXiv-2606.04135-b31b1b.svg)](https://arxiv.org/abs/2606.04135)
+[![arXiv](https://img.shields.io/badge/arXiv-2606.04135-b31b1b.svg)](https://arxiv.org/abs/2606.04135)  [📄 论文 PDF](2606.04135v1.pdf)
 
 本仓库是论文 **《Stationarity-Aware Retrieval-Augmented Time Series Forecasting》**（KDD 2026）的**复现（Reproduction）**工作，并非论文作者发布的官方实现，仅用于学习与研究。
 
