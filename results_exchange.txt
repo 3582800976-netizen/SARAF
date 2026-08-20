@@ -1,0 +1,204 @@
+﻿False
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           exchange_rate_720_96Model:              SARAF               
+
+[1mData Loader[0m
+  Data:               exchange_rate       Root Path:          ./data/exchange_rate/
+  Data Path:          exchange_rate.csv   Features:           M                   
+  Target:             OT                  Freq:               h                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            720                 Label Len:          48                  
+  Pred Len:           96                  Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             8                   Dec In:             8                   
+  C Out:              8                   d model:            512                 
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               2048                
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              fixed               Activation:         gelu                
+  Output Attention:   0                   
+
+[1mRun Parameters[0m
+  Num Workers:        10                  Itr:                1                   
+  Train Epochs:       5                   Batch Size:         8                   
+  Patience:           10                  Learning Rate:      0.0001              
+  Des:                Exp                 Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            0                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use CPU
+[RetrievalTool.__init__] time_aware_weight = 0.5
+train 4496
+val 665
+test 1422
+CUDA not available
+[INFO] Before prepare_dataset:
+
+================================================================================
+GPU Memory Allocation by Module (Device: cuda:0)
+================================================================================
+
+Module Name                                                  Memory (MB)     Percentage
+-------------------------------------------------------------------------------------
+                                                                      0.34    47.45%
+linear_x                                                              0.26    37.33%
+retrieval_pred                                                        0.04     5.02%
+retrieval_pred.0                                                      0.04     5.02%
+linear_pred_2                                                         0.04     5.02%
+retrieval_fusion_gate                                                 0.00     0.07%
+retrieval_fusion_gate.0                                               0.00     0.07%
+norm                                                                  0.00     0.01%
+-------------------------------------------------------------------------------------
+Total Parameters Memory                                               0.71   100.00%
+================================================================================
+
+Time-aware retrieval enabled. Steps per day: 24, Steps per year: 8760
+
+============================================================
+Dataset Stationarity Analysis
+============================================================
+  Total training samples: 4496
+  Samples analyzed: 4496 (100% of dataset)
+  Stationarity scores:
+    - Mean:   0.4203
+    - Std:    0.0188
+    - Min:    0.3631
+    - Max:    0.4682
+    - Median: 0.4225
+  Dataset characteristic: Moderately Non-stationary
+  Adaptive parameters:
+    - �� (temperature): 0.1949 (range: [0.05, 0.3])
+    - �� (MMR balance): 0.5522 (range: [0.3, 0.9])
+============================================================
+
+Doing Train Retrieval
+python : 
+所在位置 行:2 字符: 323
++ ... opm = 10 }; python -u run.py --task_name long_term_forecast --is_trai ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[Time-Aware] weight=0.5000
+[Time-Aware] Computing time bonus...
+[Time-Aware] time_bonus stats: min=0.3199, max=1.0000, mean=0.5171
+[Time-Aware] Applied! sim_before: mean=0.0522, sim_after: mean=0.2846, diff=0.265527
+  0%|          | 0/5 [00:00<?, ?it/s]
+
+[Time-Aware] weight=0.5000
+[Time-Aware] Computing time bonus...
+[Time-Aware] time_bonus stats: min=0.3199, max=1.0000, mean=0.5171
+[Time-Aware] Applied! sim_before: mean=-0.0484, sim_after: mean=0.2344, diff=0.308355
+ 20%|����        | 1/5 [00:00<00:03,  1.13it/s]
+
+[Time-Aware] weight=0.5000
+[Time-Aware] Computing time bonus...
+[Time-Aware] time_bonus stats: min=0.3199, max=1.0000, mean=0.5172
+[Time-Aware] Applied! sim_before: mean=0.0166, sim_after: mean=0.2669, diff=0.282047
+ 40%|��������      | 2/5 [00:01<00:02,  1.13it/s]
+
+[Time-Aware] weight=0.5000
+[Time-Aware] Computing time bonus...
+[Time-Aware] time_bonus stats: min=0.3199, max=1.0000, mean=0.5170
+[Time-Aware] Applied! sim_before: mean=0.0318, sim_after: mean=0.2744, diff=0.262360
+ 60%|������������    | 3/5 [00:02<00:01,  1.15it/s]
+
+[Time-Aware] weight=0.5000
+[Time-Aware] Computing time bonus...
+[Time-Aware] time_bonus stats: min=0.3199, max=1.0000, mean=0.5173
+[Time-Aware] Applied! sim_before: mean=0.0168, sim_after: mean=0.2670, diff=0.272474
+ 80%|����������������  | 4/5 [00:03<00:00,  1.11it/s]
+100%|��������������������| 5/5 [00:03<00:00,  1.39it/s]
+100%|��������������������| 5/5 [00:03<00:00,  1.26it/s]
+Doing Valid Retrieval
+
+
+[Time-Aware] weight=0.5000
+[Time-Aware] Computing time bonus...
+[Time-Aware] time_bonus stats: min=0.3199, max=1.0000, mean=0.5172
+[Time-Aware] Applied! sim_before: mean=0.0555, sim_after: mean=0.2863, diff=0.241974
+  0%|          | 0/1 [00:00<?, ?it/s]
+100%|��������������������| 1/1 [00:00<00:00,  1.64it/s]
+100%|��������������������| 1/1 [00:00<00:00,  1.64it/s]
+Doing Test Retrieval
+
+
+[Time-Aware] weight=0.5000
+[Time-Aware] Computing time bonus...
+[Time-Aware] time_bonus stats: min=0.3199, max=1.0000, mean=0.5172
+[Time-Aware] Applied! sim_before: mean=-0.0268, sim_after: mean=0.2452, diff=0.280385
+  0%|          | 0/2 [00:00<?, ?it/s]
+
+[Time-Aware] weight=0.5000
+[Time-Aware] Computing time bonus...
+[Time-Aware] time_bonus stats: min=0.3199, max=1.0000, mean=0.5169
+[Time-Aware] Applied! sim_before: mean=-0.0401, sim_after: mean=0.2384, diff=0.298405
+ 50%|����������     | 1/2 [00:00<00:00,  1.16it/s]
+100%|��������������������| 2/2 [00:01<00:00,  1.80it/s]
+100%|��������������������| 2/2 [00:01<00:00,  1.66it/s]
+
+[INFO] After prepare_dataset:
+CUDA not available
+
+================================================================================
+GPU Memory Allocation by Module (Device: cuda:0)
+================================================================================
+
+Module Name                                                  Memory (MB)     Percentage
+-------------------------------------------------------------------------------------
+                                                                      0.34    47.45%
+linear_x                                                              0.26    37.33%
+retrieval_pred                                                        0.04     5.02%
+retrieval_pred.0                                                      0.04     5.02%
+linear_pred_2                                                         0.04     5.02%
+retrieval_fusion_gate                                                 0.00     0.07%
+retrieval_fusion_gate.0                                               0.00     0.07%
+norm                                                                  0.00     0.01%
+-------------------------------------------------------------------------------------
+Total Parameters Memory                                               0.71   100.00%
+================================================================================
+
+>>>>>>>start training : long_term_forecast_exchange_rate_720_96_SARAF_exchange_rate_ftM_sl720_ll48_pl96_dm512_nh8_df2048_fc1_lr0.0001_topm2_sd2021>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4496
+val 665
+test 1422
+
+[INFO] Starting training...
+CUDA not available
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "D:\python\python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "D:\python\python39\lib\multiprocessing\spawn.py", line 125, in _main
+    prepare(preparation_data)
+  File "D:\python\python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "D:\python\python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+  File "D:\python\python39\lib\runpy.py", line 288, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "D:\python\python39\lib\runpy.py", line 97, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "D:\python\python39\lib\runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\run.py", line 3, in <module>
+    import torch
+  File "D:\python\python39\lib\site-packages\torch\__init__.py", line 137, in <module>
+    raise err
+OSError: [WinError 1455] ҳ���ļ�̫С���޷���ɲ����� Error loading "D:\python\python39\lib\site-packages\torch\lib\shm.dll" o
+r one of its dependencies.

@@ -1,0 +1,198 @@
+﻿False
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           electricity_720_96  Model:              SARAF               
+
+[1mData Loader[0m
+  Data:               electricity         Root Path:          ./data/electricity/ 
+  Data Path:          electricity.csv     Features:           M                   
+  Target:             OT                  Freq:               h                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            720                 Label Len:          48                  
+  Pred Len:           96                  Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             321                 Dec In:             321                 
+  C Out:              321                 d model:            512                 
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               2048                
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              fixed               Activation:         gelu                
+  Output Attention:   0                   
+
+[1mRun Parameters[0m
+  Num Workers:        10                  Itr:                1                   
+  Train Epochs:       3                   Batch Size:         8                   
+  Patience:           10                  Learning Rate:      0.01                
+  Des:                Exp                 Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            0                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use CPU
+[RetrievalTool.__init__] time_aware_weight = 0.7
+train 17597
+val 2537
+test 5165
+CUDA not available
+[INFO] Before prepare_dataset:
+
+================================================================================
+GPU Memory Allocation by Module (Device: cuda:0)
+================================================================================
+
+Module Name                                                  Memory (MB)     Percentage
+-------------------------------------------------------------------------------------
+                                                                      1.12    36.61%
+retrieval_fusion_gate                                                 0.79    25.62%
+retrieval_fusion_gate.0                                               0.79    25.62%
+linear_x                                                              0.26     8.59%
+retrieval_pred                                                        0.04     1.16%
+retrieval_pred.0                                                      0.04     1.16%
+linear_pred_2                                                         0.04     1.16%
+norm                                                                  0.00     0.08%
+-------------------------------------------------------------------------------------
+Total Parameters Memory                                               3.07   100.00%
+================================================================================
+
+python : Traceback (most recent call last):
+所在位置 行:2 字符: 149
++ ... 96, 192)) { python -u run.py --task_name long_term_forecast --is_trai ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\run.py", line 189, in <modul
+e>
+    exp = Exp(args)  # set experiments
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\exp\exp_long_term_forecastin
+g.py", line 24, in __init__
+    super(Exp_Long_Term_Forecast, self).__init__(args)
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\exp\exp_basic.py", line 14, 
+in __init__
+    self.model = self._build_model().to(self.device) #_build_model runs automatically when Exp_Long_Term_Forecast is in
+stantiated.
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\exp\exp_long_term_forecastin
+g.py", line 43, in _build_model
+    model.prepare_dataset(train_data, vali_data, test_data)
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\models\SARAF.py", line 136, 
+in prepare_dataset
+    self.rt.prepare_dataset(train_data)
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\layers\Retrieval.py", line 1
+08, in prepare_dataset
+    self.train_data_all_mg, _ = self.decompose_mg(self.train_data_all)
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\layers\Retrieval.py", line 3
+69, in decompose_mg
+    mg[i] = data_p - cur_offset # subtract the final time-step feature from every time step to obtain relative offsets
+RuntimeError: [enforce fail at alloc_cpu.cpp:114] data. DefaultCPUAllocator: not enough memory: you tried to allocate 1
+6268074560 bytes.
+False
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           electricity_720_192 Model:              SARAF               
+
+[1mData Loader[0m
+  Data:               electricity         Root Path:          ./data/electricity/ 
+  Data Path:          electricity.csv     Features:           M                   
+  Target:             OT                  Freq:               h                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            720                 Label Len:          48                  
+  Pred Len:           192                 Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             321                 Dec In:             321                 
+  C Out:              321                 d model:            512                 
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               2048                
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              fixed               Activation:         gelu                
+  Output Attention:   0                   
+
+[1mRun Parameters[0m
+  Num Workers:        10                  Itr:                1                   
+  Train Epochs:       3                   Batch Size:         8                   
+  Patience:           10                  Learning Rate:      0.01                
+  Des:                Exp                 Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            0                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use CPU
+[RetrievalTool.__init__] time_aware_weight = 0.7
+train 17501
+val 2441
+test 5069
+CUDA not available
+[INFO] Before prepare_dataset:
+
+================================================================================
+GPU Memory Allocation by Module (Device: cuda:0)
+================================================================================
+
+Module Name                                                  Memory (MB)     Percentage
+-------------------------------------------------------------------------------------
+                                                                      1.60    38.76%
+retrieval_fusion_gate                                                 0.79    19.06%
+retrieval_fusion_gate.0                                               0.79    19.06%
+linear_x                                                              0.53    12.79%
+retrieval_pred                                                        0.14     3.42%
+retrieval_pred.0                                                      0.14     3.42%
+linear_pred_2                                                         0.14     3.42%
+norm                                                                  0.00     0.06%
+-------------------------------------------------------------------------------------
+Total Parameters Memory                                               4.13   100.00%
+================================================================================
+
+python : Traceback (most recent call last):
+所在位置 行:2 字符: 149
++ ... 96, 192)) { python -u run.py --task_name long_term_forecast --is_trai ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\run.py", line 189, in <modul
+e>
+    exp = Exp(args)  # set experiments
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\exp\exp_long_term_forecastin
+g.py", line 24, in __init__
+    super(Exp_Long_Term_Forecast, self).__init__(args)
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\exp\exp_basic.py", line 14, 
+in __init__
+    self.model = self._build_model().to(self.device) #_build_model runs automatically when Exp_Long_Term_Forecast is in
+stantiated.
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\exp\exp_long_term_forecastin
+g.py", line 43, in _build_model
+    model.prepare_dataset(train_data, vali_data, test_data)
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\models\SARAF.py", line 136, 
+in prepare_dataset
+    self.rt.prepare_dataset(train_data)
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\layers\Retrieval.py", line 1
+08, in prepare_dataset
+    self.train_data_all_mg, _ = self.decompose_mg(self.train_data_all)
+  File "D:\AIProjects\Stationarity-Aware Retrieval-Augmented Time Series Forecasting\SARAF\layers\Retrieval.py", line 3
+69, in decompose_mg
+    mg[i] = data_p - cur_offset # subtract the final time-step feature from every time step to obtain relative offsets
+RuntimeError: [enforce fail at alloc_cpu.cpp:114] data. DefaultCPUAllocator: not enough memory: you tried to allocate 1
+6179324480 bytes.
